@@ -1,20 +1,19 @@
-import products from './assets/products.json'
+import { ThemeProvider } from 'styled-components'
+import { Router } from './Router'
+import { defaultTheme } from './styles/themes/default'
+import { GlobalStyle } from './styles/global'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
 
   return (
     <>
-      <section>
-        {products.map((product) => {
-          return (<div className="">
-            {product.name}
-            <img src={product.image_src}
-              alt={product.name}
-              title={product.name}
-            />
-          </div>)
-        })}
-      </section>
+      <ThemeProvider theme={defaultTheme}>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+        <GlobalStyle />
+      </ThemeProvider>
     </>
   )
 }

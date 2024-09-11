@@ -14,8 +14,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        background-color: ${(props) => props.theme['gray-900']};
-        color: ${(props) => props.theme['gray-300']};
+        background-color: ${(props) => props.theme['white']};
+        color: ${(props) => props.theme['base-text']};
         -webkit-font-smoothing: antialiased;
     }
 
@@ -31,7 +31,7 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         font-style: normal;
     }
-    
+
     .baloo-2--extra-bold {
         font-family: "Baloo 2", sans-serif;
         font-optical-sizing: auto;
