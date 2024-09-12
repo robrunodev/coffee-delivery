@@ -38,5 +38,26 @@ export const BannerIntro = styled.div`
 export const BannerBenefits = styled.div`
         display: flex;
         align-items: center;
-        flex-flow: column wrap;
+        flex-flow: row wrap;
+        row-gap: 10px;
+        column-gap: 10px;
+        margin-top: 2rem;
 `
+
+export const Container = styled.section`
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+        
+    .list-title {
+        font-size: 2rem;
+        color: ${props => props.theme['base-subtitle']}
+    }
+`
+
+export const Products = styled.section`
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+`
+

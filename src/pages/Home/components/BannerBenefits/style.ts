@@ -8,8 +8,15 @@ interface IconWrapperProps {
 export const BenefitItemContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    max-width: 45%;
+    width: 100%;
+    gap: 10px;
+    
+    p {
+        font-size: .87rem;
+    }
 `
 
 export const IconWrapper = styled.span<IconWrapperProps>`
@@ -20,5 +27,6 @@ export const IconWrapper = styled.span<IconWrapperProps>`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ${props => props.theme['white']}
+    color: ${props => props.theme['white']};
+    flex-shrink: 0;
 `

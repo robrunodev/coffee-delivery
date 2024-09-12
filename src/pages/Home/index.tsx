@@ -1,4 +1,4 @@
-import { BannerBenefits, BannerContainer, BannerIntro, HomeContainer } from "./styles";
+import { BannerBenefits, BannerContainer, BannerIntro, HomeContainer, Container, Products } from "./styles";
 import bannerImage from "../../assets/img/banner_coffee.png"
 import { Coffee, Package, ShoppingCart, Timer } from "@phosphor-icons/react";
 import { BenefitItem, BenefitItemProps } from "./components/BannerBenefits";
@@ -60,6 +60,12 @@ export function Home() {
                         />
                     </div>
                 </BannerContainer>
+                <Container>
+                    <h2 className="list-title baloo-2--extra-bold">Nossos cafés</h2>
+                    <Products>
+
+                    </Products>
+                </Container>
             </HomeContainer>
         </>
     )
