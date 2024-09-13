@@ -3,7 +3,7 @@ import { BenefitItemContainer, IconWrapper } from "./style";
 import { defaultTheme } from '../../../../styles/themes/default';
 
 export interface BenefitItemProps {
-    id: any
+    id: number
     text: string
     icon: ReactNode
     iconColor: keyof typeof defaultTheme

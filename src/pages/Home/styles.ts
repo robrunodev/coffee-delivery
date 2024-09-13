@@ -10,18 +10,16 @@ export const BannerContainer = styled.div`
     align-items: center;
     flex-flow: row nowrap;
     padding: 4rem 0;
-    gap: 22px;
-
-    .banner-image {
-        
-    }
+    gap: 15px;
 `
 
-export const BannerIntro = styled.div`
+export const Intro = styled.div`
         display: flex;
         align-items: center;
         flex-flow: column wrap;
         gap: 14px;
+        max-width: 55%;
+        width: 100%;
         
         > p {
             font-size: 3rem;
@@ -33,6 +31,11 @@ export const BannerIntro = styled.div`
             font-size: 1.25rem;
             color: ${props => props.theme['base-subtitle']}
         }
+`
+
+export const IntroImg = styled.img`
+    max-width: 45%;
+    width: 100%;
 `
 
 export const BannerBenefits = styled.div`
@@ -59,5 +62,7 @@ export const Products = styled.section`
     display: flex;
     align-items: center;
     flex-flow: row wrap;
+    justify-content: space-between;
+    column-gap: 20px;
+    row-gap: 35px;
 `
-
