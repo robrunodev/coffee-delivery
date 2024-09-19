@@ -1,8 +1,9 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { QuantityInput } from "../../../../components/QuantityInput";
-import { Badges, Card, CoffeeImg } from "./styles";
+import { Badges, Card, CoffeeImg, CardFooter, CardActions, AddToCartBtn, Price } from "./styles";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ShoppingCart } from "@phosphor-icons/react";
 
 export interface CoffeeCategories {
     name: string,
@@ -14,7 +15,7 @@ export type Coffee = {
         id: string | number,
         name: string,
         description: string,
-        price: number,
+        price: number | string,
         image_src: string,
         categories: CoffeeCategories[]
     }
@@ -45,13 +46,10 @@ export function ProductCard({ coffee }: Coffee) {
         }
     })
 
-    const { formState } = productForm
-
-    console.error({ error: formState.errors })
-
     return (
         <Card>
             <CoffeeImg src={coffee.image_src} alt={coffee.name} />
+
             <Badges>
                 {coffee.categories.length > 0 && coffee.categories.map((category, idx) => (
                     <span key={`${idx}_${category.slug}`}>
@@ -59,18 +57,30 @@ export function ProductCard({ coffee }: Coffee) {
                     </span>)
                 )}
             </Badges>
+
             <p className="baloo-2--extra-bold">{coffee.name}</p>
+
             <span>{coffee.description}</span>
-            <div className="price-actions">
-                <p className="price">{coffee.price}</p>
-                <FormProvider {...productForm} >
-                    <QuantityInput
-                        handleDecrease={handleDecrease}
-                        handleIncrease={handleIncrease}
-                    />
-                </FormProvider>
-                <button type="button">Comprar</button>
-            </div>
+
+            <CardFooter className="card-footer">
+                <Price>
+                    <span>R$</span>
+                    <p className="baloo-2--extra-bold">{coffee.price}</p>
+                </Price>
+
+                <CardActions>
+                    <FormProvider {...productForm}>
+                        <QuantityInput
+                            handleDecrease={handleDecrease}
+                            handleIncrease={handleIncrease}
+                        />
+                        <AddToCartBtn type="button">
+                            <ShoppingCart size={17} weight="fill" />
+                        </AddToCartBtn>
+                    </FormProvider>
+                </CardActions>
+
+            </CardFooter>
         </Card >
     )
 }

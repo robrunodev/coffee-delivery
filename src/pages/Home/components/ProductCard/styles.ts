@@ -13,16 +13,6 @@ export const Card = styled.div`
     background-color: ${(props) => props.theme['base-card']};
     padding: 1.25rem;
 
-    .badge {
-
-        &__item {
-  
-        }
-    }
-
-    img {
-    }
-
     > p {
         font-size: 1.25rem;
         color: ${(props) => props.theme['base-title']};
@@ -33,10 +23,6 @@ export const Card = styled.div`
         text-align: center;
         color: ${(props) => props.theme['base-label']};
         font-size: 0.875rem;
-    }
-
-    .price-actions {
-
     }
 `
 
@@ -60,4 +46,47 @@ export const Badges = styled.div`
             font-size: 0.625rem;
             padding: 4px 8px;
         }
+`
+
+export const CardFooter = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.2rem;
+    width: 100%;
+    gap: 10px;
+`
+
+export const CardActions = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+`
+
+export const AddToCartBtn = styled.button`
+    background-color: ${(props) => props.theme['purple-dark']};
+    padding: .5rem;
+    border-radius: 6px;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &:focus {
+        box-shadow: none;
+    }
+`
+
+export const Price = styled.div`
+    display: flex;
+    color: ${(props) => props.theme['base-text']};
+    font-size: .875rem;
+    gap: 3.5px;
+
+    > p {
+        font-size: 1.5rem;
+        line-height: 1rem;
+    }
 `
