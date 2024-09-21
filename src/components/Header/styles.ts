@@ -32,8 +32,25 @@ export const HeaderNav = styled.nav`
 
         &:last-child {
             background-color: ${(props) => props.theme['yellow-light']};
-            color: ${(props) => props.theme['yellow-dark']}
+            color: ${(props) => props.theme['yellow-dark']};
+            position: relative;
+
         }
     }
-
 `
+
+export const QuantityBadge = styled.span`
+    color: white;
+    font-weight: 600;
+    background-color: ${(props) => props.theme['yellow-dark']};
+    border-radius: 50%;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    padding: 2px 2px;
+    top: -8px;
+    right: -8px;
+    text-align: center;
+    font-size: 0.8rem;
+
+`  

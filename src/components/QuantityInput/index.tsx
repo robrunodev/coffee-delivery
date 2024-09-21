@@ -1,29 +1,20 @@
 import { Minus, Plus } from "@phosphor-icons/react";
-import { useFormContext } from "react-hook-form";
-import { Box, ControlQtyBtn, QtyInput } from "./styles";
+import { Box, ControlQtyBtn } from "./styles";
 
 interface QuantityInputProps {
     handleDecrease: () => void;
     handleIncrease: () => void;
+    quantity: number;
 }
 
-export function QuantityInput({ handleDecrease, handleIncrease }: QuantityInputProps) {
-
-    const { register } = useFormContext()
-
+export function QuantityInput({ handleDecrease, handleIncrease, quantity }: QuantityInputProps) {
 
     return (
         <Box>
             <ControlQtyBtn type="button" onClick={handleDecrease}>
                 <Minus size={14} />
             </ControlQtyBtn>
-
-            <QtyInput type="text"
-                {...register('quantity', {
-                    valueAsNumber: true,
-                })}
-            />
-            
+            {quantity}
             <ControlQtyBtn type="button" onClick={handleIncrease}>
                 <Plus size={14} />
             </ControlQtyBtn>

@@ -1,83 +1,67 @@
-import { FormProvider, useForm } from "react-hook-form";
-import { QuantityInput } from "../../../../components/QuantityInput";
-import { Badges, Card, CoffeeImg, CardFooter, CardActions, AddToCartBtn, Price } from "./styles";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { ShoppingCart } from "@phosphor-icons/react";
+import { useContext, useState } from "react";
+import { QuantityInput } from "../../../../components/QuantityInput";
+import { CartContext } from "../../../../contexts/CartContext";
+import { AddToCartBtn, Badges, Card, CardActions, CardFooter, CoffeeImg, Price } from "./styles";
+import { Coffee } from "../../../../interfaces/Coffee";
 
-export interface CoffeeCategories {
-    name: string,
-    slug: string
+interface ProductCardProps {
+    product: Coffee
 }
 
-export type Coffee = {
-    coffee: {
-        id: string | number,
-        name: string,
-        description: string,
-        price: number | string,
-        image_src: string,
-        categories: CoffeeCategories[]
-    }
-}
+export function ProductCard({ product }: ProductCardProps) {
 
-interface ProductForm {
-    quantity?: number
-}
+    const [quantity, setQuantity] = useState(1)
 
-export function ProductCard({ coffee }: Coffee) {
+    const { addToCart } = useContext(CartContext)
 
     const handleIncrease = () => {
-        console.log("teste")
+        setQuantity(state => state + 1)
     }
 
     const handleDecrease = () => {
-        console.log("teste 2")
+        if (quantity > 1) {
+            setQuantity(state => state - 1)
+        }
     }
 
-    const productFormValidationSchema = z.object({
-        quantity: z.coerce.number().min(1, 'A quantidade mínima é 1')
-    })
+    const handleAddToCart = () => {
+        addToCart(product, quantity)
+        setQuantity(1)
+    }
 
-    const productForm = useForm<ProductForm>({
-        resolver: zodResolver(productFormValidationSchema),
-        defaultValues: {
-            quantity: 1
-        }
-    })
 
     return (
         <Card>
-            <CoffeeImg src={coffee.image_src} alt={coffee.name} />
+            <CoffeeImg src={product.image_src} alt={product.name} />
 
             <Badges>
-                {coffee.categories.length > 0 && coffee.categories.map((category, idx) => (
+                {product.categories.length > 0 && product.categories.map((category, idx) => (
                     <span key={`${idx}_${category.slug}`}>
                         {category.name}
                     </span>)
                 )}
             </Badges>
 
-            <p className="baloo-2--extra-bold">{coffee.name}</p>
+            <p className="baloo-2--extra-bold">{product.name}</p>
 
-            <span>{coffee.description}</span>
+            <span>{product.description}</span>
 
             <CardFooter className="card-footer">
                 <Price>
                     <span>R$</span>
-                    <p className="baloo-2--extra-bold">{coffee.price}</p>
+                    <p className="baloo-2--extra-bold">{product.price}</p>
                 </Price>
 
                 <CardActions>
-                    <FormProvider {...productForm}>
-                        <QuantityInput
-                            handleDecrease={handleDecrease}
-                            handleIncrease={handleIncrease}
-                        />
-                        <AddToCartBtn type="button">
-                            <ShoppingCart size={17} weight="fill" />
-                        </AddToCartBtn>
-                    </FormProvider>
+                    <QuantityInput
+                        handleDecrease={handleDecrease}
+                        handleIncrease={handleIncrease}
+                        quantity={quantity}
+                    />
+                    <AddToCartBtn type="button" onClick={handleAddToCart}>
+                        <ShoppingCart size={17} weight="fill" />
+                    </AddToCartBtn>
                 </CardActions>
 
             </CardFooter>

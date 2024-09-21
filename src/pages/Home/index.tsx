@@ -57,7 +57,7 @@ export function Home() {
                 <h2 className="list-title baloo-2--extra-bold">Nossos cafés</h2>
                 <Products>
                     {coffees.length > 0 && coffees.map((coffee) => (
-                        <ProductCard key={coffee.id} coffee={coffee} />
+                        <ProductCard key={coffee.id} product={coffee} />
                     ))}
                 </Products>
             </Container>

@@ -5,6 +5,7 @@
     "description": "O tradicional café feito com água quente e grãos moídos",
     "price": 9.9,
     "image_src": "/assets/images/products/traditional_expresso.png",
+    "stock": 20,
     "categories": [
       {
         "name": "Tradicional",
@@ -18,6 +19,7 @@
     "description": "Expresso diluído, menos intenso que o tradicional",
     "price": 9.9,
     "image_src": "/assets/images/products/american_expresso.png",
+    "stock": 20,
     "categories": [
       {
         "name": "Tradicional",
@@ -31,6 +33,7 @@
     "description": "Bebida preparada com café expresso e cubos de gelo",
     "price": 9.9,
     "image_src": "/assets/images/products/iced_expresso.png",
+    "stock": 20,
     "categories": [
       {
         "name": "Tradicional",
@@ -48,6 +51,7 @@
     "description": "Drink gelado de café expresso com rum, creme de leite e hortelã",
     "price": 9.9,
     "image_src": "/assets/images/products/cubano.png",
+    "stock": 20,
     "categories": [
       {
         "name": "Especial",

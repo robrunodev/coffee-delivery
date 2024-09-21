@@ -7,19 +7,8 @@ export const Box = styled.div`
     flex-flow: row wrap;
     align-items: center;
     padding: .5rem;
-`
-
-export const QtyInput = styled.input`
-    background-color: transparent;
-    max-width: 28px;
-    width: 100%;
-    border: 0;
-    text-align: center;
-    color: ${props => props.theme['base-title']};
-
-    &:focus {
-        box-shadow: none;
-    }
+    min-width: 4.5rem;
+    justify-content: space-between;
 `
 
 export const ControlQtyBtn = styled.button`
