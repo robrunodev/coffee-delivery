@@ -18,7 +18,7 @@ export const Header = memo(function Header() {
                     <MapPin weight="fill" size={22} />
                     <span>São Paulo, SP</span>
                 </NavLink>
-                <NavLink to="/">
+                <NavLink to="/cart">
                     <QuantityBadge>
                         {totalCartQty}
                     </QuantityBadge>
