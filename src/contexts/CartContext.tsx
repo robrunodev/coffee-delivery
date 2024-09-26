@@ -27,7 +27,7 @@ export const CartContextProvider = ({ children }: cartContextProviderProps) => {
             items: [],
             totalCartQty: 0,
             totalCartValue: 0
-        }
+        },
     )
 
     const { items: cartItems, totalCartQty, totalCartValue } = cartState
