@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface TextInputProps {
-    size: number
+    size: number | 'full'
 }
 
 export const CartContainer = styled.section`

@@ -18,6 +18,7 @@ export const Cart = () => {
                     </AddressHeader>
                     <form>
                         <TextInput type="text" size={200} placeholder="CEP"/>
+                        <TextInput type="text" size={"full"} placeholder="Rua"/>
                     </form>
                 </FormContainer>
                 <PaymentContainer>
