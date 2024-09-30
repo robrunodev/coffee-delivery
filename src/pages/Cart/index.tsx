@@ -1,5 +1,5 @@
 import { MapPinLine } from "@phosphor-icons/react"
-import { AddressHeader, CartContainer, FormContainer, OrderDetails, OrderItems, PaymentContainer, TextInput, Title } from "./styles"
+import { AddressHeader, CartContainer, FormContainer, OptionalField, OrderDetails, OrderForm, OrderFormRow, OrderItems, PaymentContainer, TextInput, Title } from "./styles"
 
 export const Cart = () => {
     return (
@@ -16,10 +16,34 @@ export const Cart = () => {
                             </span>
                         </div>
                     </AddressHeader>
-                    <form>
-                        <TextInput type="text" size={200} placeholder="CEP"/>
-                        <TextInput type="text" size={"full"} placeholder="Rua"/>
-                    </form>
+                    <OrderForm>
+                        <OrderFormRow>
+                            <TextInput type="text" size={200} placeholder="CEP" />
+                        </OrderFormRow>
+
+                        <OrderFormRow>
+                            <TextInput type="text" size={"full"} placeholder="Rua" />
+                        </OrderFormRow>
+
+                        <OrderFormRow>
+                            <TextInput type="text" size={200} placeholder="Número" />
+                            <OptionalField size={'full'} flexSize={1}>
+                                <TextInput
+                                    type="text"
+                                    size={'full'}
+                                    placeholder="Complemento"
+                                />
+                                <span>opcional</span>
+                            </OptionalField>
+                        </OrderFormRow>
+
+                        <OrderFormRow>
+                            <TextInput type="text" size={'full'} flexSize={1} placeholder="Bairro" />
+                            <TextInput type="text" size={300} flexSize={1} placeholder="Cidade" />
+                            <TextInput type="text" size={60} flexSize={1} placeholder="UF" />
+                        </OrderFormRow>
+
+                    </OrderForm>
                 </FormContainer>
                 <PaymentContainer>
 
@@ -27,7 +51,6 @@ export const Cart = () => {
             </OrderDetails>
             <OrderItems>
                 <Title className="baloo-2--bold">Cafés selecionados</Title>
-
             </OrderItems>
         </CartContainer>
     )

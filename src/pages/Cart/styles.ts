@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 interface TextInputProps {
-    size: number | 'full'
+    size: number | 'full',
+    flexSize?: number
 }
 
 export const CartContainer = styled.section`
@@ -19,11 +20,16 @@ export const Title = styled.p`
 
 export const OrderDetails = styled.div``
 
-export const OrderItems = styled.div``
+export const OrderItems = styled.div`
+    /* flex: 1;
+    width: 30%; */
+`
 
 export const FormContainer = styled.div`
     background-color: ${props => props.theme['base-card']};
     padding: 40px 25px;
+    /* flex: 1;
+    width: 70%; */
 `
 
 export const AddressHeader = styled.div`
@@ -50,6 +56,21 @@ export const PaymentContainer = styled.div`
     background-color: ${props => props.theme['base-card']};
 `
 
+export const OrderForm = styled.form`
+   display: flex;
+   flex-flow: row wrap;
+   gap: 16px ;
+   margin-top: 32px;
+`
+
+export const OrderFormRow = styled.form`
+   display: flex;
+   flex-flow: row wrap;
+   gap: 0 10px;
+   width: 100%;
+   position: relative;
+`
+
 const BaseInput = styled.input`
     background-color: ${props => props.theme['base-input']};
     border: 1px solid ${props => props.theme['base-button']};
@@ -57,6 +78,7 @@ const BaseInput = styled.input`
     padding: 10px 15px;
     border-radius: 4px;
     color: ${props => props.theme['base-text']};
+    position: relative;
     
     &::placeholder {
         color: ${props => props.theme['base-label']}; 
@@ -67,6 +89,33 @@ const BaseInput = styled.input`
     }
 `
 
-export const TextInput = styled(BaseInput)<TextInputProps>`
-    max-width: ${props => props.size}px;
+export const TextInput = styled(BaseInput) <TextInputProps>`
+    max-width: ${props => props.size === 'full' ? `100%` : `${props.size}px`};
+    width: 100%;
+    ${props => props.flexSize && `
+        flex: 1
+    `};
 `
+
+export const OptionalField = styled.div<TextInputProps>`
+    max-width: ${props => props.size === 'full' ? `100%` : `${props.size}px`};
+    width: 100%;
+    ${props => props.flexSize && `
+        flex: 1
+    `};
+    position: relative;
+
+    > input {
+        padding-right: 60px;
+    }
+    
+    span {
+        position: absolute;
+        right: 12px;
+        top: 13px;
+        font-size: .75rem;
+        font-style: italic;
+        color: ${props => props.theme['base-label']};
+    }
+`
+
