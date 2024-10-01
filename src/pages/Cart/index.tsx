@@ -1,4 +1,4 @@
-import { MapPinLine } from "@phosphor-icons/react"
+import { CurrencyDollar, MapPinLine } from "@phosphor-icons/react"
 import { ContainerHeader, CartContainer, FormContainer, OptionalField, OrderDetails, OrderForm, OrderFormRow, OrderItems, PaymentContainer, TextInput, Title } from "./styles"
 
 export const Cart = () => {
@@ -46,7 +46,15 @@ export const Cart = () => {
                     </OrderForm>
                 </FormContainer>
                 <PaymentContainer>
-
+                    <ContainerHeader>
+                        <CurrencyDollar size={22} weight="regular" />
+                        <div>
+                            <p>Pagamento</p>
+                            <span>
+                                O pagamento é feito na entrega. Escolha a forma que deseja pagar
+                            </span>
+                        </div>
+                    </ContainerHeader>
                 </PaymentContainer>
             </OrderDetails>
             <OrderItems>
