@@ -32,7 +32,7 @@ export const FormContainer = styled.div`
     width: 70%; */
 `
 
-export const AddressHeader = styled.div`
+export const ContainerHeader = styled.div`
     display: flex;
     flex-flow: row wrap;
     gap: .875rem;

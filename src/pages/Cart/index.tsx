@@ -1,5 +1,5 @@
 import { MapPinLine } from "@phosphor-icons/react"
-import { AddressHeader, CartContainer, FormContainer, OptionalField, OrderDetails, OrderForm, OrderFormRow, OrderItems, PaymentContainer, TextInput, Title } from "./styles"
+import { ContainerHeader, CartContainer, FormContainer, OptionalField, OrderDetails, OrderForm, OrderFormRow, OrderItems, PaymentContainer, TextInput, Title } from "./styles"
 
 export const Cart = () => {
     return (
@@ -7,7 +7,7 @@ export const Cart = () => {
             <OrderDetails>
                 <Title className="baloo-2--bold">Complete seu pedido</Title>
                 <FormContainer>
-                    <AddressHeader>
+                    <ContainerHeader>
                         <MapPinLine size={22} weight="regular" />
                         <div>
                             <p>Endereço de Entrega</p>
@@ -15,7 +15,7 @@ export const Cart = () => {
                                 Informe o endereço onde deseja receber seu pedido
                             </span>
                         </div>
-                    </AddressHeader>
+                    </ContainerHeader>
                     <OrderForm>
                         <OrderFormRow>
                             <TextInput type="text" size={200} placeholder="CEP" />
