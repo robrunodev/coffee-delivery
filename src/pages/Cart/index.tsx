@@ -1,13 +1,14 @@
 import { CurrencyDollar, MapPinLine } from "@phosphor-icons/react"
-import { ContainerHeader, CartContainer, FormContainer, OptionalField, OrderDetails, OrderForm, OrderFormRow, OrderItems, PaymentContainer, TextInput, Title } from "./styles"
+import { ContainerHeading, CartContainer, AddressContainer, OrderDetails, AddressForm, OrderItems, PaymentContainer, Title } from "./styles"
+import { TextInput } from "../../components/TextInput"
 
 export const Cart = () => {
     return (
         <CartContainer>
             <OrderDetails>
                 <Title className="baloo-2--bold">Complete seu pedido</Title>
-                <FormContainer>
-                    <ContainerHeader>
+                <AddressContainer>
+                    <ContainerHeading iconColor="yellow-dark">
                         <MapPinLine size={22} weight="regular" />
                         <div>
                             <p>Endereço de Entrega</p>
@@ -15,38 +16,54 @@ export const Cart = () => {
                                 Informe o endereço onde deseja receber seu pedido
                             </span>
                         </div>
-                    </ContainerHeader>
-                    <OrderForm>
-                        <OrderFormRow>
-                            <TextInput type="text" size={200} placeholder="CEP" />
-                        </OrderFormRow>
+                    </ContainerHeading>
+                    <AddressForm>
+                        <TextInput
+                            type="text"
+                            placeholder="CEP"
+                            containerProps={{ style: { gridArea: 'cep' } }}
+                        />
 
-                        <OrderFormRow>
-                            <TextInput type="text" size={"full"} placeholder="Rua" />
-                        </OrderFormRow>
+                        <TextInput
+                            type="text"
+                            placeholder="Rua"
+                            containerProps={{ style: { gridArea: 'street' } }}
+                        />
 
-                        <OrderFormRow>
-                            <TextInput type="text" size={200} placeholder="Número" />
-                            <OptionalField size={'full'} flexSize={1}>
-                                <TextInput
-                                    type="text"
-                                    size={'full'}
-                                    placeholder="Complemento"
-                                />
-                                <span>opcional</span>
-                            </OptionalField>
-                        </OrderFormRow>
+                        <TextInput
+                            type="text"
+                            placeholder="Número"
+                            containerProps={{ style: { gridArea: 'number' } }}
+                        />
 
-                        <OrderFormRow>
-                            <TextInput type="text" size={'full'} flexSize={1} placeholder="Bairro" />
-                            <TextInput type="text" size={300} flexSize={1} placeholder="Cidade" />
-                            <TextInput type="text" size={60} flexSize={1} placeholder="UF" />
-                        </OrderFormRow>
+                        <TextInput
+                            type="text"
+                            placeholder="Complemento"
+                            optional={true}
+                            containerProps={{ style: { gridArea: 'fullAddress' } }}
+                        />
 
-                    </OrderForm>
-                </FormContainer>
+                        <TextInput
+                            type="text"
+                            placeholder="Bairro"
+                            containerProps={{ style: { gridArea: 'neighborhood' } }}
+                        />
+
+                        <TextInput
+                            type="text"
+                            placeholder="Cidade"
+                            containerProps={{ style: { gridArea: 'city' } }}
+                        />
+
+                        <TextInput
+                            type="text"
+                            placeholder="UF"
+                            containerProps={{ style: { gridArea: 'state' } }}
+                        />
+                    </AddressForm>
+                </AddressContainer>
                 <PaymentContainer>
-                    <ContainerHeader>
+                    <ContainerHeading iconColor="purple">
                         <CurrencyDollar size={22} weight="regular" />
                         <div>
                             <p>Pagamento</p>
@@ -54,7 +71,7 @@ export const Cart = () => {
                                 O pagamento é feito na entrega. Escolha a forma que deseja pagar
                             </span>
                         </div>
-                    </ContainerHeader>
+                    </ContainerHeading>
                 </PaymentContainer>
             </OrderDetails>
             <OrderItems>
