@@ -18,7 +18,10 @@ export const Title = styled.p`
     font-size: 1.125rem;
 `
 
-export const OrderDetails = styled.div``
+export const OrderDetails = styled.div`
+    max-width: 640px;
+    width: 100%;
+`
 
 export const OrderItems = styled.div``
 
@@ -66,4 +69,13 @@ export const AddressForm = styled.form`
 `
 
 export const PaymentContainer = styled(FormsContainer)`
+`
+
+export const PaymentOptions = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 26px;
 `

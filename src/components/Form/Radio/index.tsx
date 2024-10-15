@@ -1,18 +1,21 @@
-import { forwardRef, InputHTMLAttributes, LegacyRef } from 'react'
+import { forwardRef, InputHTMLAttributes, LegacyRef, ReactNode } from 'react'
 import { Container } from './styles'
 
 type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
-    isSelected: boolean
+    isSelected: boolean,
+    icon: ReactNode,
+    text: string
 }
 
 export const Radio = forwardRef(function Radio(
-    { children, isSelected, ...rest }: RadioProps,
+    { isSelected, icon, text, ...rest }: RadioProps,
     ref: LegacyRef<HTMLInputElement>
 ) {
     return (
         <Container data-state={isSelected}>
             <input type="radio" ref={ref} {...rest} />
-            {children}
+            {icon}
+            <span>{text}</span>
         </Container>
     )
-}) 
+})

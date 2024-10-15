@@ -1,6 +1,6 @@
 import { ShoppingCart } from "@phosphor-icons/react";
 import { useContext, useState } from "react";
-import { QuantityInput } from "../../../../components/QuantityInput";
+import { QuantityInput } from "../../../../components/Form/QuantityInput";
 import { CartContext } from "../../../../contexts/CartContext";
 import { AddToCartBtn, Badges, Card, CardActions, CardFooter, CoffeeImg, Price } from "./styles";
 import { Coffee } from "../../../../interfaces/Coffee";
