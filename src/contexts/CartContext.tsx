@@ -13,13 +13,13 @@ interface CartContextType {
     removeFromCart: () => void
 }
 
-interface cartContextProviderProps {
+interface CartContextProviderProps {
     children: React.ReactNode
 }
 
 export const CartContext = createContext({} as CartContextType)
 
-export const CartContextProvider = ({ children }: cartContextProviderProps) => {
+export const CartContextProvider = ({ children }: CartContextProviderProps) => {
 
     const [cartState, dispatch] = useReducer(
         cartReducer,

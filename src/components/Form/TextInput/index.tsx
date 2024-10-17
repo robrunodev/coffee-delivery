@@ -1,6 +1,7 @@
 import { forwardRef, HTMLAttributes, InputHTMLAttributes, LegacyRef } from "react";
 import { FieldError } from 'react-hook-form'
 import { Box, InputContainer } from "./styles";
+import { Warning } from "../../Warning";
 
 
 type TextInputProps = InputHTMLAttributes<HTMLDivElement> & {
@@ -24,7 +25,7 @@ export const TextInput = forwardRef(function TextInput(
                 {optional && <span>opcional </span>}
             </InputContainer>
 
-            {error?.message && <span>{error.message}</span>}
+            {error?.message && <Warning type="error" text={error.message} />}
         </Box>
     )
 })

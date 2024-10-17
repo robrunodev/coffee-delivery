@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.label`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,10 +25,9 @@ export const Container = styled.div`
         margin-right: 8px;
     }
 
-    &[data-state=true] {
+    &[data-state='true'] {
         background-color: ${({theme}) => theme['purple-light']};
         border-color: ${({theme}) => theme['purple']};
-
     }
 
 

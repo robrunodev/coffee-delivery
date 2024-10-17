@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { defaultTheme } from '../../styles/themes/default';
 
 interface HeadingProps {
-    iconColor: keyof typeof defaultTheme
+    color: keyof typeof defaultTheme
 }
 
 export const CartContainer = styled.section`
@@ -47,7 +47,7 @@ export const ContainerHeading = styled.div<HeadingProps>`
     }
 
     svg {
-        color: ${({ theme, iconColor }) => theme[iconColor]};
+        color: ${({ theme, color }) => theme[color]};
     }
 `
 
@@ -55,7 +55,7 @@ export const AddressContainer = styled(FormsContainer)`
     margin-bottom: 1rem;
 `
 
-export const AddressForm = styled.form`
+export const AddressForm = styled.section`
     display: grid;
     grid-template-areas:
         'cep . .'

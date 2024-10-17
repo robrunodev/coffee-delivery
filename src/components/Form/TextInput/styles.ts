@@ -11,6 +11,7 @@ export const Box = styled.div`
 export const InputContainer = styled.div`
     position: relative;
     width: 100%;
+    margin-bottom: 4px;
     
     input[type="text"] {
         background-color: ${props => props.theme['base-input']};
