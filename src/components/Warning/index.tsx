@@ -1,7 +1,7 @@
 import { Container, WarningTypes } from "./styles";
 
 interface WarningProps {
-    text: string
+    text: string | undefined
     type: WarningTypes['type']
 }
 

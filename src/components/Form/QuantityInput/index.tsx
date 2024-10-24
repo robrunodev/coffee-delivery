@@ -4,7 +4,7 @@ import { Box, ControlQtyBtn } from "./styles";
 interface QuantityInputProps {
     handleDecrease: () => void;
     handleIncrease: () => void;
-    quantity: number;
+    quantity?: number;
 }
 
 export function QuantityInput({ handleDecrease, handleIncrease, quantity }: QuantityInputProps) {

@@ -19,4 +19,5 @@ export const Container = styled.p<WarningTypes>`
     padding: 2px 5px;
     display: flex;
     align-items: center;
+    width: 100%;
 `

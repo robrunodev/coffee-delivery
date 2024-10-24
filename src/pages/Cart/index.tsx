@@ -3,14 +3,15 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { z } from "zod"
 import { Radio } from "../../components/Form/Radio"
 import { TextInput } from "../../components/Form/TextInput"
-import { AddressContainer, AddressForm, CartContainer, ContainerHeading, OrderDetails, OrderItems, PaymentContainer, PaymentOptions, Title } from "./styles"
+import { AddressContainer, AddressForm, CartContainer, ContainerHeading, OrderDetails, OrderItem, OrderItems, OrderItemsContainer, PaymentContainer, PaymentOptions, Title } from "./styles"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useContext } from "react"
 import { CartContext } from "../../contexts/CartContext"
-
+import { Warning } from "../../components/Warning"
+import { QuantityInput } from "../../components/Form/QuantityInput"
 
 const newOrderSchema = z.object({
-    cep: z.number({ message: 'Informe o CEP' }),
+    cep: z.string().min(1, 'Informe o CEP').max(9, 'CEP inválido'),
     street: z.string().min(1, 'Informe a Rua'),
     st_number: z.number({ message: 'Informe o Número' }),
     fullAddress: z.string().optional(),
@@ -163,7 +164,7 @@ export const Cart = () => {
                             />
 
                             {errors.paymentMethod ? (
-                                <span>{errors.paymentMethod.message}</span>
+                                <Warning text={errors.paymentMethod.message} type="error" />
                             ) : null}
 
                         </PaymentOptions>
@@ -174,6 +175,23 @@ export const Cart = () => {
 
             <OrderItems>
                 <Title className="baloo-2--bold">Cafés selecionados</Title>
+
+                <OrderItemsContainer>
+                    {cartItems.length > 0 && cartItems.map((item) => (
+                        <OrderItem key={item.id}>
+                            <img src={item.image_src} alt={item.name} />
+                            <div className="order-item__infos">
+                                <span>{item.name}</span>
+                                <QuantityInput
+                                    handleDecrease={() => { }}
+                                    handleIncrease={() => { }}
+                                    quantity={item.quantity}
+                                />
+                            </div>
+                        </OrderItem>
+                    ))}
+                </OrderItemsContainer>
+
                 <button type="submit" form="order">Finalizar Pedido</button>
             </OrderItems>
         </CartContainer>

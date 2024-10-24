@@ -79,3 +79,20 @@ export const PaymentOptions = styled.div`
     align-items: center;
     margin-top: 26px;
 `
+
+
+export const OrderItemsContainer = styled.div`
+    background-color: ${({ theme }) => theme['base-card']};
+    border-radius: 6px 44px 6px 44px;
+    padding: 40px 25px;
+`
+
+export const OrderItem = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .order-item__infos {
+        
+    }
+`

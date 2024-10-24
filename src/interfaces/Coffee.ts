@@ -11,5 +11,5 @@ export type Coffee = {
     image_src: string,
     categories: CoffeeCategories[]
     stock: number
-    quantity?: 0 | number
+    quantity?: number
 }

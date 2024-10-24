@@ -10,6 +10,8 @@ interface CartContextType {
     totalCartQty: number
     totalCartValue: number
     addToCart: (item: Coffee, qty: number) => void
+    incrementItemQty: (itemId: Coffee['id']) => void
+    decrementItemQty: (itemId: Coffee['id']) => void
     removeFromCart: () => void
 }
 
@@ -44,6 +46,10 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
 
     function removeFromCart() { }
 
+    function incrementItemQty() { }
+
+    function decrementItemQty() { }
+
 
     return (
         <CartContext.Provider value={{
@@ -51,6 +57,8 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
             totalCartQty,
             totalCartValue,
             addToCart,
+            incrementItemQty,
+            decrementItemQty,
             removeFromCart,
         }}>
             {children}
