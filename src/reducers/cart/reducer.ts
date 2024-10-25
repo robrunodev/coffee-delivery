@@ -1,9 +1,16 @@
 
 import { CartState } from "../../interfaces/Cart";
+import { Coffee } from "../../interfaces/Coffee";
 import { CartActionsTypes } from "./actions";
 
+interface ActionProps {
+    payload: {
+        item: Coffee
+    },
+    type: CartActionsTypes
+}
 
-export function cartReducer(state: CartState, action) {
+export function cartReducer(state: CartState, action: ActionProps) {
     switch (action.type) {
         case CartActionsTypes.ADD_TO_CART: {
             const newState = { ...state }
@@ -12,7 +19,7 @@ export function cartReducer(state: CartState, action) {
             if (itemAlreadyAdded) {
                 newState.items = newState.items.map((item) => {
                     if (item.id === action.payload.item.id) {
-                        return { ...item, quantity: item.quantity + action.payload.item.quantity }
+                        return { ...item, quantity: (item.quantity ?? 0) + (action.payload.item.quantity ?? 0) }
                     }
                     return item
                 })
@@ -40,6 +47,17 @@ export function cartReducer(state: CartState, action) {
             return {
                 ...state
             }
+        }
+        case CartActionsTypes.INCREMENT_ITEM_QUANTITY: {
+
+            const newState = { ...state }
+            const item = newState.items.find(item => item.id === action.payload.item.id)
+
+            if (item) {
+                item.quantity = (item.quantity ?? 0) + 1
+            }
+
+            return { ...state }
         }
 
         default:
