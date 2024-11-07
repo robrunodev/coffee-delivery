@@ -23,11 +23,11 @@ const newOrderSchema = z.object({
     })
 })
 
-type OrderInfo = z.infer<typeof newOrderSchema>
+export type OrderInfo = z.infer<typeof newOrderSchema>
 
 export const Cart = () => {
 
-    const { cartItems } = useContext(CartContext)
+    const { cartItems, incrementItemQty, decrementItemQty } = useContext(CartContext)
 
     const {
         register,
@@ -47,6 +47,14 @@ export const Cart = () => {
         if (cartItems.length === 0) {
             return alert('Seu carrinho está vazio')
         }
+    }
+
+    function handleItemIncrement(itemId: string) {
+        incrementItemQty(itemId)
+    }
+
+    function handleItemDecrement(itemId: string) {
+        decrementItemQty(itemId)
     }
 
     return (
@@ -183,8 +191,8 @@ export const Cart = () => {
                             <div className="order-item__infos">
                                 <span>{item.name}</span>
                                 <QuantityInput
-                                    handleDecrease={() => { }}
-                                    handleIncrease={() => { }}
+                                    handleIncrease={() => handleItemIncrement(String(item.id))}
+                                    handleDecrease={() => handleItemDecrement(String(item.id))}
                                     quantity={item.quantity}
                                 />
                             </div>

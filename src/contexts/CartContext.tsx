@@ -2,7 +2,7 @@
 
 import { createContext, useReducer } from "react"
 import { Coffee } from "../interfaces/Coffee"
-import { addToCartAction } from "../reducers/cart/actions"
+import { addToCartAction, decrementItemQtyAction, incrementItemQtyAction } from "../reducers/cart/actions"
 import { cartReducer } from "../reducers/cart/reducer"
 
 interface CartContextType {
@@ -46,10 +46,13 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
 
     function removeFromCart() { }
 
-    function incrementItemQty() { }
+    function incrementItemQty(itemId: Coffee['id']) {
+        dispatch(incrementItemQtyAction(itemId))
+    }
 
-    function decrementItemQty() { }
-
+    function decrementItemQty(itemId: Coffee['id']) {
+        dispatch(decrementItemQtyAction(itemId))
+    }
 
     return (
         <CartContext.Provider value={{
