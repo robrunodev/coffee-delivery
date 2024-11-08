@@ -8,6 +8,7 @@ export const Box = styled.div`
     align-items: center;
     padding: .5rem;
     min-width: 4.5rem;
+    max-width: 5rem;
     justify-content: space-between;
 `
 

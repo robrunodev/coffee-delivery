@@ -95,4 +95,28 @@ export const OrderItem = styled.div`
     .order-item__infos {
         
     }
+
+    .order-item__actions {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+`
+
+export const RemoveItemButton = styled.button`
+    border-radius: 6px;
+    background-color: ${({ theme }) => theme['base-button']};
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme['base-text']};
+    font-size: 0.875rem;
+
+    svg {
+        margin-right: 4px;
+        color: ${({ theme }) => theme['purple']};
+    }
 `

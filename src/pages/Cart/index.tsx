@@ -1,14 +1,15 @@
-import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "@phosphor-icons/react"
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money, Trash } from "@phosphor-icons/react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { z } from "zod"
 import { Radio } from "../../components/Form/Radio"
 import { TextInput } from "../../components/Form/TextInput"
-import { AddressContainer, AddressForm, CartContainer, ContainerHeading, OrderDetails, OrderItem, OrderItems, OrderItemsContainer, PaymentContainer, PaymentOptions, Title } from "./styles"
+import { AddressContainer, AddressForm, CartContainer, ContainerHeading, OrderDetails, OrderItem, OrderItems, OrderItemsContainer, PaymentContainer, PaymentOptions, RemoveItemButton, Title } from "./styles"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useContext } from "react"
 import { CartContext } from "../../contexts/CartContext"
 import { Warning } from "../../components/Warning"
 import { QuantityInput } from "../../components/Form/QuantityInput"
+import { Coffee } from "../../interfaces/Coffee"
 
 const newOrderSchema = z.object({
     cep: z.string().min(1, 'Informe o CEP').max(9, 'CEP inválido'),
@@ -40,20 +41,17 @@ export const Cart = () => {
 
     const selectedPaymentMethod = watch('paymentMethod')
 
-    console.log({ selectedPaymentMethod, errors })
-
-    const handleOrderCheckout: SubmitHandler<OrderInfo> = (data) => {
-        console.log(JSON.stringify(data))
+    const handleOrderCheckout: SubmitHandler<OrderInfo> = () => {
         if (cartItems.length === 0) {
             return alert('Seu carrinho está vazio')
         }
     }
 
-    function handleItemIncrement(itemId: string) {
+    function handleItemIncrement(itemId: Coffee['id']) {
         incrementItemQty(itemId)
     }
 
-    function handleItemDecrement(itemId: string) {
+    function handleItemDecrement(itemId: Coffee['id']) {
         decrementItemQty(itemId)
     }
 
@@ -190,11 +188,17 @@ export const Cart = () => {
                             <img src={item.image_src} alt={item.name} />
                             <div className="order-item__infos">
                                 <span>{item.name}</span>
-                                <QuantityInput
-                                    handleIncrease={() => handleItemIncrement(String(item.id))}
-                                    handleDecrease={() => handleItemDecrement(String(item.id))}
-                                    quantity={item.quantity}
-                                />
+                                <div className="order-item__actions">
+                                    <QuantityInput
+                                        handleIncrease={() => handleItemIncrement(item.id)}
+                                        handleDecrease={() => handleItemDecrement(item.id)}
+                                        quantity={item.quantity}
+                                    />
+                                    <RemoveItemButton onClick={() => { }}>
+                                        <Trash size={16} weight="regular" />
+                                        Remover
+                                    </RemoveItemButton>
+                                </div>
                             </div>
                         </OrderItem>
                     ))}
