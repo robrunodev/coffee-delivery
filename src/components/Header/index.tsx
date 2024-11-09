@@ -12,7 +12,9 @@ export const Header = memo(function Header() {
 
     return (
         <HeaderContainer>
-            <img src={logo} alt="Logo" />
+            <NavLink to="/">
+                <img src={logo} alt="Logo" />
+            </NavLink>
             <HeaderNav>
                 <NavLink to="/">
                     <MapPin weight="fill" size={22} />

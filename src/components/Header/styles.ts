@@ -6,6 +6,12 @@ export const HeaderContainer = styled.header`
     justify-content: space-between;
     align-items: center;
     padding: 2rem 0;
+
+    & > a {
+        &:focus {
+            box-shadow: none;
+        }
+    }
 `
 
 
@@ -23,7 +29,6 @@ export const HeaderNav = styled.nav`
         align-items: center;
         padding: .5rem;
         gap: .3rem;
-        
 
         &:first-child {
             background-color: ${(props) => props.theme['purple-light']};
@@ -52,5 +57,4 @@ export const QuantityBadge = styled.span`
     right: -8px;
     text-align: center;
     font-size: 0.8rem;
-
 `  
