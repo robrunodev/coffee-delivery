@@ -3,13 +3,14 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { z } from "zod"
 import { Radio } from "../../components/Form/Radio"
 import { TextInput } from "../../components/Form/TextInput"
-import { AddressContainer, AddressForm, CartContainer, ContainerHeading, OrderDetails, OrderItem, OrderItems, OrderItemsContainer, PaymentContainer, PaymentOptions, RemoveItemButton, Title } from "./styles"
+import { AddressContainer, AddressForm, CartContainer, ContainerHeading, OrderDetails, OrderItem, OrderItemInfos, OrderItems, OrderItemsContainer, PaymentContainer, PaymentOptions, RemoveItemButton, Title } from "./styles"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useContext } from "react"
 import { CartContext } from "../../contexts/CartContext"
 import { Warning } from "../../components/Warning"
 import { QuantityInput } from "../../components/Form/QuantityInput"
 import { Coffee } from "../../interfaces/Coffee"
+import { moneyFormatter } from "../../utils/formatters"
 
 const newOrderSchema = z.object({
     cep: z.string().min(1, 'Informe o CEP').max(9, 'CEP inválido'),
@@ -187,7 +188,10 @@ export const Cart = () => {
                         <OrderItem key={item.id}>
                             <img src={item.image_src} alt={item.name} />
                             <div className="order-item__infos">
-                                <span>{item.name}</span>
+                                <OrderItemInfos>
+                                    <span className="item-name">{item.name}</span>
+                                    <span className="item-price">{moneyFormatter(item.price)}</span>
+                                </OrderItemInfos>
                                 <div className="order-item__actions">
                                     <QuantityInput
                                         handleIncrease={() => handleItemIncrement(item.id)}

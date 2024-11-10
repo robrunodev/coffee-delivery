@@ -9,7 +9,6 @@ export const CartContainer = styled.section`
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    align-items: center;
     gap: 1em;
 `
 
@@ -23,7 +22,10 @@ export const OrderDetails = styled.div`
     width: 100%;
 `
 
-export const OrderItems = styled.div``
+export const OrderItems = styled.div`
+    flex: 1;
+    width: 100%;
+`
 
 const FormsContainer = styled.div`
     background-color: ${({ theme }) => theme['base-card']};
@@ -89,11 +91,13 @@ export const OrderItemsContainer = styled.div`
 
 export const OrderItem = styled.div`
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid ${({ theme }) => theme['base-button']};
+    padding: 1rem;
 
-    .order-item__infos {
-        
+    img {
+        max-width: 64px;
+        margin-right: 16px;
     }
 
     .order-item__actions {
@@ -101,6 +105,22 @@ export const OrderItem = styled.div`
         align-items: center;
         gap: 5px;
     }
+`
+
+export const OrderItemInfos = styled.div`
+    color: ${({ theme }) => theme['base-subtitle']};
+    display: flex;
+    justify-content: space-between;
+
+    span {
+            display: block;
+            color: ${({ theme }) => theme['base-subtitle']};
+            margin-bottom: 5px;
+
+            &.item-price {
+               font-weight: bold;
+            }
+        }
 `
 
 export const RemoveItemButton = styled.button`
