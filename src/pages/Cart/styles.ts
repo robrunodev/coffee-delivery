@@ -86,7 +86,10 @@ export const PaymentOptions = styled.div`
 export const OrderItemsContainer = styled.div`
     background-color: ${({ theme }) => theme['base-card']};
     border-radius: 6px 44px 6px 44px;
-    padding: 40px 25px;
+    padding: 25px 25px;
+    /* display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between; */
 `
 
 export const OrderItem = styled.div`
@@ -100,10 +103,20 @@ export const OrderItem = styled.div`
         margin-right: 16px;
     }
 
-    .order-item__actions {
+    .order-item {
         display: flex;
         align-items: center;
         gap: 5px;
+
+        &__actions {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+        
+        &__infos {
+            flex: 1;
+        }
     }
 `
 
@@ -139,4 +152,43 @@ export const RemoveItemButton = styled.button`
         margin-right: 4px;
         color: ${({ theme }) => theme['purple']};
     }
+`
+
+export const TotalCartInfo = styled.section`
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    gap: .5rem;
+    
+    > div {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+        flex-flow: row wrap;
+        width: 100%;
+
+        & + div + div {
+            > span {
+                font-weight: bold;
+                font-size: 1.125rem;
+            }
+        }
+    }
+`
+
+export const ConfirmOrderBtn = styled.button`
+    width: 100%;
+    border-radius: 6px;
+    background-color: ${({ theme }) => theme['yellow']};
+    display: flex;
+    align-items: center;
+    padding: 14px 8px;
+    border: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme['white']};
+    font-size: 0.875rem;
+    justify-content: center;
+    flex: 1;
+    margin-top: 1.5rem;
 `

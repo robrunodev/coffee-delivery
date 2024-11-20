@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { z } from "zod"
 import { Radio } from "../../components/Form/Radio"
 import { TextInput } from "../../components/Form/TextInput"
-import { AddressContainer, AddressForm, CartContainer, ContainerHeading, OrderDetails, OrderItem, OrderItemInfos, OrderItems, OrderItemsContainer, PaymentContainer, PaymentOptions, RemoveItemButton, Title } from "./styles"
+import { AddressContainer, AddressForm, CartContainer, ConfirmOrderBtn, ContainerHeading, OrderDetails, OrderItem, OrderItemInfos, OrderItems, OrderItemsContainer, PaymentContainer, PaymentOptions, RemoveItemButton, Title, TotalCartInfo } from "./styles"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useContext } from "react"
 import { CartContext } from "../../contexts/CartContext"
@@ -11,6 +11,9 @@ import { Warning } from "../../components/Warning"
 import { QuantityInput } from "../../components/Form/QuantityInput"
 import { Coffee } from "../../interfaces/Coffee"
 import { moneyFormatter } from "../../utils/formatters"
+
+
+const shippingPrice = 3.5
 
 const newOrderSchema = z.object({
     cep: z.string().min(1, 'Informe o CEP').max(9, 'CEP inválido'),
@@ -29,7 +32,7 @@ export type OrderInfo = z.infer<typeof newOrderSchema>
 
 export const Cart = () => {
 
-    const { cartItems, incrementItemQty, decrementItemQty } = useContext(CartContext)
+    const { cartItems, incrementItemQty, decrementItemQty, totalCartValue } = useContext(CartContext)
 
     const {
         register,
@@ -182,8 +185,8 @@ export const Cart = () => {
 
             <OrderItems>
                 <Title className="baloo-2--bold">Cafés selecionados</Title>
-
                 <OrderItemsContainer>
+                    
                     {cartItems.length > 0 && cartItems.map((item) => (
                         <OrderItem key={item.id}>
                             <img src={item.image_src} alt={item.name} />
@@ -206,9 +209,26 @@ export const Cart = () => {
                             </div>
                         </OrderItem>
                     ))}
-                </OrderItemsContainer>
+                    
+                    <TotalCartInfo>
+                        <div>
+                            <span>Total de Items</span>
+                            <span>{moneyFormatter(totalCartValue)}</span>
+                        </div>
+                        <div>
+                            <span>Entrega</span>
+                            <span>{moneyFormatter(shippingPrice)}</span>
+                        </div>
+                        <div>
+                            <span>Total</span>
+                            <span>{moneyFormatter(totalCartValue + shippingPrice)}</span>
+                        </div>
+                        <ConfirmOrderBtn type="submit" form="order">
+                            Confirmar Pedido
+                        </ConfirmOrderBtn>
+                    </TotalCartInfo>
 
-                <button type="submit" form="order">Finalizar Pedido</button>
+                </OrderItemsContainer>
             </OrderItems>
         </CartContainer>
     )
